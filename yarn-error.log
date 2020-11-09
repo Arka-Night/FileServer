@@ -1,0 +1,41 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add express jsPDF
+
+PATH: 
+  C:\Program Files\PowerShell\7;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;E:\Lua;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Users\elonj\Desktop\Lua\RainbowLanguage;C:\TDM-GCC-64\bin;C:\TDM-GCC-32\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\PowerShell\7\;C:\ProgramData\chocolatey\bin;C:\Users\elonj\.windows-build-tools\python27\;C:\Users\elonj\.windows-build-tools\python27\;C:\Users\elonj\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\elonj\AppData\Local\Programs\Python\Python37-32\;C:\Users\elonj\Editores de c�digo\Microsoft VS Code\bin;E:\Lua;C:\Users\elonj\AppData\Local\Microsoft\WindowsApps;C:\Users\elonj\AppData\Roaming\npm;C:\Users\elonj;C:\Program Files\heroku\bin;C:\Users\elonj\AppData\Local\atom\bin;C:\Users\elonj\AppData\Local\Yarn\bin;C:\Users\elonj\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;;C:\Users\elonj\Editores de código\Microsoft VS Code\bin
+
+Yarn version: 
+  1.22.0
+
+Node version: 
+  12.4.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/jsPDF: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66084:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140727:22)
+      at Request.emit (events.js:200:13)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141699:10)
+      at Request.emit (events.js:200:13)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141621:12)
+      at Object.onceWrapper (events.js:288:20)
+      at IncomingMessage.emit (events.js:205:15)
+      at endReadableNT (_stream_readable.js:1154:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:9)
+
+npm manifest: 
+  {
+    "name": "ServidorDeArquivosDeClientes",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

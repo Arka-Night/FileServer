@@ -1,0 +1,143 @@
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #242424f6;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+input {
+    outline: none;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #242424f6;
+}
+
+input::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+a {
+    cursor: default;
+}
+
+.send, .download, .search_button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #242424f6;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    text-align: center;
+    background: none;
+    outline: none;
+
+}
+
+.send, .download {
+    margin-top: 5px;
+}
+
+.send {
+    width: 90px;
+    height: 30px;
+}
+
+.download {
+    width: 50px;
+    height: 30px;
+}
+
+.search_button {
+    width: 100px;
+    height: 30px;
+}
+
+label#file_selectionFOR:hover, .send:hover, #arrow_left:hover, #arrow_right:hover, .download:hover, .search_button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.file_wrapper label#file_selectionFOR {
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 5px;
+
+}
+
+.file_wrapper {
+    width: 50%;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+.pdf_return {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter_div {
+    margin-bottom: 10px;
+}
+
+#arrow_left, #arrow_right {
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 200px;
+    line-height: 35px;
+    text-align: center;
+}
+
+#arrow_left {
+    margin-right: 20px;
+}
+
+#arrow_right {
+    margin-left: 20px;
+}
+
+.counter {
+    font-size: 25px;
+}
+
+.search_div {
+    display: flex;
+    width: 450px;
+    margin-bottom: 5px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
