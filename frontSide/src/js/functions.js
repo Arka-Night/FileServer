@@ -14,15 +14,6 @@ function getReadableFileSizeString(fileSizeInBytes) {
     }
 };
 
-function setCounter() {
-    const labelCounter = document.getElementsByClassName('counter')[0];
-
-    if(counter === 0) {
-        labelCounter.innerHTML = 0;
-    } else {
-        labelCounter.innerHTML = 1;
-    }
-}
 
 function firstSetCounter() {
     const labelCounter = document.getElementsByClassName('counter')[0];
@@ -61,12 +52,10 @@ async function getCounter() {
         if(counter.data === 'try again') {
             counter = await connection('/getCounter');
             counter = counter.data.counter;
-            setCounter();
             return;
 
         }
         counter = counter.data.counter;
-        setCounter();
 
     } catch(err) {
         alert('Error, trying again');
@@ -88,6 +77,11 @@ function getDbByClientName(clientName) {
             };
             const response = await connection.post('/get', body);
 
+            if(response.data === ""){
+                alert("Client was not found");
+                return;
+            }
+
             if(response.data === 'try again') {       
                 const resp = await connection.post('/get', body);
                 getFile(resp);
@@ -104,7 +98,7 @@ function getDbByClientName(clientName) {
         }
 
         timer = 0;
-    }, 250);
+    }, 500);
 }
 
 function getDbById(id) {
@@ -137,7 +131,7 @@ function getDbById(id) {
         }
 
         timer = 0;
-    }, 250);
+    }, 500);
 }
 
 function getFile(response) {
@@ -156,7 +150,7 @@ function getFile(response) {
         document.getElementById('pdf_download').setAttribute('href', `${baseURL}docs/${response.data.arquive}`);
 
         timer = 0;
-    }, 250);
+    }, 500);
 }
 
 async function getAuthToken() {

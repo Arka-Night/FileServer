@@ -31,7 +31,7 @@ input::placeholder {
 }
 
 a {
-    cursor: default;
+    height: 30px;
 }
 
 .send, .download, .search_button {
@@ -46,26 +46,24 @@ a {
     text-align: center;
     background: none;
     outline: none;
+    height: 30px;
 
 }
 
-.send, .download {
+.send, a {
     margin-top: 5px;
 }
 
 .send {
     width: 90px;
-    height: 30px;
 }
 
 .download {
     width: 50px;
-    height: 30px;
 }
 
 .search_button {
     width: 100px;
-    height: 30px;
 }
 
 label#file_selectionFOR:hover, .send:hover, #arrow_left:hover, #arrow_right:hover, .download:hover, .search_button:hover {
