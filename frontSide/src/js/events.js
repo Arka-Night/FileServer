@@ -8,7 +8,7 @@ const minusButton = document.getElementById('arrow_left');
 const onClickMinus = (e) => {
     const nowLabel = document.getElementsByClassName('counter')[0];
 
-    if(now - 1 === 0 || now === 0) {
+    if(now - 1 === 0) {
         return;
 
     } else {
