@@ -52,10 +52,12 @@ async function getCounter() {
         if(counter.data === 'try again') {
             counter = await connection('/getCounter');
             counter = counter.data.counter;
+            now = counter;
             return;
 
         }
         counter = counter.data.counter;
+        now = counter;
 
     } catch(err) {
         alert('Error, trying again');
