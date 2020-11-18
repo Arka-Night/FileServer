@@ -6,11 +6,12 @@ module.exports = {
     async create(req, res, next) {
         if(req.body.fileSize < 104857600) {
             try {
+                const clientName = req.body.clientName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
                 const count = await connection('ClientId').count('clientId', {as: 'counter'}).first();
                 const clientId = parseInt(count.counter) + 1;
 
                 const data = req.body.binary.replace(/^data:([A-Za-z-+\/]+);base64,/, "");
-                const fileName = clientId + '-' + req.body.clientName + '.' + req.body.fileType;
+                const fileName = clientId + '-' + clientName + '.' + req.body.fileType;
                 const newPath = path.join(__dirname, '../../docs/' + fileName);
 
                 fs.writeFile(newPath, data, 'base64', async (err) => {
@@ -20,7 +21,7 @@ module.exports = {
 
                     try {
                         await connection('ClientId').insert({ 
-                            clientName: req.body.clientName,
+                            clientName: clientName,
                             arquive: fileName,
                         });        
 
@@ -44,7 +45,7 @@ module.exports = {
 
     async get(req, res, next) {
         const type = req.body.requestType;
-        const post = type === 'id' ? req.body.id : req.body.clientName;
+        const post = type === 'id' ? req.body.id : req.body.clientName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
 
         try { 
             const arquive = await connection('ClientId').where(type === 'id' ? 'clientId' : 'clientName', post).first();

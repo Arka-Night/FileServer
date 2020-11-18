@@ -79,7 +79,7 @@ function getDbByClientName(clientName) {
             };
             const response = await connection.post('/get', body);
 
-            if(response.data === ""){
+            if(response.data === "" || response.data === undefined){
                 alert("Client was not found");
                 return;
             }
