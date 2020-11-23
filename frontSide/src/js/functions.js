@@ -143,6 +143,7 @@ function getFile(response) {
 
     timer = setTimeout(() => {
         document.getElementsByClassName('counter')[0].innerHTML = response.data.clientId;
+        now = response.data.clientId;
 
         const pdf = document.getElementsByClassName('pdf_embed')[0];
         const clone = pdf.cloneNode(true);
