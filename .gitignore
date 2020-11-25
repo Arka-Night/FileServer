@@ -2,5 +2,3 @@ node_modules
 database/db.sqlite
 src/auth/key
 docs
-index.html
-test

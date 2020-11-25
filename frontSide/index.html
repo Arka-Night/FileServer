@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./src/index.css" />
+    <title>FileServer</title>
+</head>
+<body>
+    <div class="file_wrapper">
+        <label id="file_selectionFOR" for="file_selection">Select file</label>
+        <input id="file_selection" type="file" accept="application/pdf">   
+        <div>
+            <label id="selected_file">File selected: </label>
+        </div>
+        <div>
+            <label id="file_size">File size: </label>
+        </div>
+        <div class="config_form">
+            Config: 
+            <div class="config_inputs">
+                <input id="client_name" placeholder="Client name" />
+            </div>
+            <div>
+                <button class="send">Send</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="pdf_return">
+        <div class="counter_div">
+            <i class="fas fa-arrow-left" id="arrow_left"></i>
+            <label class="counter">1</label>
+            <i class="fas fa-arrow-right" id="arrow_right"></i>
+        </div>
+        <div class="search_div">
+            <input id="clientInput" placeholder="Client name" />
+            <button class="search_button">Search</button>
+        </div>
+        <div class="search_div">
+            <input id="clientIDInput" type="number" placeholder="Client ID" />
+            <button class="search_button">Search</button>
+        </div>
+        <embed class="pdf_embed" src="" width="500" height="450"/>
+        <a id="pdf_download" href="" download><button class="download"><i class="fas fa-file-download"></i></button></a>
+    </div>
+
+    <script src="https://kit.fontawesome.com/eaa7f439da.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./src/js/functions.js"></script>
+    <script src="./src/index.js"></script>
+    <script src="./src/js/events.js"></script>
+</body>
+</html>
