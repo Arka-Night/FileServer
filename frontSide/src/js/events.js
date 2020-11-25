@@ -2,6 +2,7 @@ const body = document.querySelector("body");
 const fileSelector = document.getElementById('file_selection');
 const sendButton = document.getElementsByClassName('send')[0];
 const searchButton = document.getElementsByClassName('search_button')[0];
+const searchIDButton = document.getElementsByClassName('search_button')[1];
 const plusButton = document.getElementById('arrow_right');
 const minusButton = document.getElementById('arrow_left');
 
@@ -24,6 +25,14 @@ const onSearch = (e) => {
     const clientName = searchInput.value;
 
     getDbByClientName(clientName);
+
+}
+
+const onIDSearch = (e) => {
+    const searchInput = document.getElementById('clientIDInput');
+    const clientID = searchInput.value;
+
+    getDbById(clientID);
 
 }
 
@@ -81,6 +90,7 @@ ondrop = (e) => {
 }
 
 searchButton.addEventListener('click', onSearch, false);
+searchIDButton.addEventListener('click', onIDSearch, false);
 plusButton.addEventListener('click', onClickPlus, false);
 minusButton.addEventListener('click', onClickMinus, false);
 sendButton.addEventListener('click', send, false);

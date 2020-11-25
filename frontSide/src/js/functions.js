@@ -86,6 +86,12 @@ function getDbByClientName(clientName) {
 
             if(response.data === 'try again') {       
                 const resp = await connection.post('/get', body);
+
+                if(resp.data === "" || resp.data === undefined){
+                    alert("Client was not found");
+                    return;
+                }
+
                 getFile(resp);
                 timer = 0;
                 return;
@@ -117,8 +123,19 @@ function getDbById(id) {
             };
             const response = await connection.post('/get', body);
 
+            if(response.data === "" || response.data === undefined){
+                alert("Client was not found");
+                return;
+            }
+
             if(response.data === 'try again') {       
                 const resp = await connection.post('/get', body);
+
+                if(resp.data === "" || resp.data === undefined){
+                    alert("Client was not found");
+                    return;
+                }
+
                 getFile(resp);
                 timer = 0;
                 return;
