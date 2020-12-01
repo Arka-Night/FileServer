@@ -154,23 +154,15 @@ function getDbById(id) {
 }
 
 function getFile(response) {
-    if(timer !== 0) {
-        clearTimeout(timer);
-    }
+    document.getElementsByClassName('counter')[0].innerHTML = response.data.clientId;
+    now = response.data.clientId;
 
-    timer = setTimeout(() => {
-        document.getElementsByClassName('counter')[0].innerHTML = response.data.clientId;
-        now = response.data.clientId;
+    const pdf = document.getElementsByClassName('pdf_embed')[0];
+    const clone = pdf.cloneNode(true);
+    clone.setAttribute('src', `${baseURL}docs/${response.data.arquive}`);
+    pdf.parentNode.replaceChild(clone, pdf);
 
-        const pdf = document.getElementsByClassName('pdf_embed')[0];
-        const clone = pdf.cloneNode(true);
-        clone.setAttribute('src', `${baseURL}docs/${response.data.arquive}`);
-        pdf.parentNode.replaceChild(clone, pdf);
-
-        document.getElementById('pdf_download').setAttribute('href', `${baseURL}docs/${response.data.arquive}`);
-
-        timer = 0;
-    }, 500);
+    document.getElementById('pdf_download').setAttribute('href', `${baseURL}docs/${response.data.arquive}`);
 }
 
 async function getAuthToken() {
