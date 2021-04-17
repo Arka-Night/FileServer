@@ -43,6 +43,35 @@ module.exports = {
         }
     },
 
+    async removeATable(req, res, next) {
+        const clientId = req.body.clientID;
+        
+        try {
+            const data = await connection('ClientID').where('clientId', clientId).select('*').first();
+            const dataAll = await connection('ClientID');
+
+            await connection('ClientID').where('clientId', clientId).first().del();
+            fs.unlinkSync(data.arquive);
+            for(i in dataAll) {
+                if(i++ > clientId) {
+                    await connection('ClientID').where('clientId', i++).first().update('clientId', i);
+
+                }
+
+            }
+
+            console.log(await connection('ClientID'));
+
+            // await connection('ClientID').where('clientId', clientId).select('*').first();
+        
+
+        } catch(err) {
+            return res.json({ error: 'error in database' });
+        }
+        
+
+    },
+
     async get(req, res, next) {
         const type = req.body.requestType;
         const post = type === 'id' ? req.body.id : req.body.clientName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
