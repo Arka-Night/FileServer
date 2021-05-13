@@ -50,22 +50,21 @@ module.exports = {
             const data = await connection('ClientID').where('clientId', clientId).select('*').first();
             const dataAll = await connection('ClientID');
 
+            fs.unlinkSync(__dirname + "/../../docs/" + data.arquive);
             await connection('ClientID').where('clientId', clientId).first().del();
-            fs.unlinkSync(data.arquive);
             for(i in dataAll) {
-                if(i++ > clientId) {
-                    await connection('ClientID').where('clientId', i++).first().update('clientId', i);
+                if(parseInt(i)+1 > clientId) {
+                    await connection('ClientID').where('clientId', parseInt(i)+1).first().update('clientId', parseInt(i));
 
                 }
 
             }
 
-            console.log(await connection('ClientID'));
-
             // await connection('ClientID').where('clientId', clientId).select('*').first();
         
 
         } catch(err) {
+            console.log(err);
             return res.json({ error: 'error in database' });
         }
         
