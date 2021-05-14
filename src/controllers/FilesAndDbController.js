@@ -1,4 +1,8 @@
 const connection = require('../../database/connection');
+const increm = require("./incrementsVariable.json");
+const newIncrem = `{
+    "increments": ${increm.increments+1}
+}`
 const path = require('path');
 const fs = require('fs');
 
@@ -8,10 +12,11 @@ module.exports = {
             try {
                 const clientName = req.body.clientName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
                 const count = await connection('ClientId').count('clientId', {as: 'counter'}).first();
-                const clientId = parseInt(count.counter) + 1;
+                const fileClientId = parseInt(count.counter) + 1;
+                const clientId = parseInt(count.counter) + 1 + increm.increments;
 
                 const data = req.body.binary.replace(/^data:([A-Za-z-+\/]+);base64,/, "");
-                const fileName = clientId + '-' + clientName + '.' + req.body.fileType;
+                const fileName = fileClientId + '-' + clientName + '.' + req.body.fileType;
                 const newPath = path.join(__dirname, '../../docs/' + fileName);
 
                 fs.writeFile(newPath, data, 'base64', async (err) => {
@@ -24,8 +29,9 @@ module.exports = {
                             clientName: clientName,
                             arquive: fileName,
                         });        
+                        await connection('ClientId').where('clientId', clientId).first().update('clientId', fileClientId);
 
-                        const client = await connection('ClientId').where('clientId', clientId).select('*').first();
+                        const client = await connection('ClientId').where('clientId', fileClientId).select('*').first();
                         
                         return res.json(client);
                         
@@ -50,7 +56,9 @@ module.exports = {
             const data = await connection('ClientID').where('clientId', clientId).select('*').first();
             const dataAll = await connection('ClientID');
 
-            fs.unlinkSync(__dirname + "/../../docs/" + data.arquive);
+            console.log(data);
+
+            fs.unlinkSync(path.join(__dirname + "/../../docs/" + data.arquive));
             await connection('ClientID').where('clientId', clientId).first().del();
             for(i in dataAll) {
                 if(parseInt(i)+1 > clientId) {
@@ -60,8 +68,7 @@ module.exports = {
 
             }
 
-            // await connection('ClientID').where('clientId', clientId).select('*').first();
-        
+            fs.writeFileSync(path.join(__dirname + '/incrementsVariable.json'), newIncrem);
 
         } catch(err) {
             console.log(err);
